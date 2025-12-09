@@ -14,7 +14,7 @@ const variantClasses: Record<ButtonVariant, string> = {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = "primary", className = "", children, ...props }, ref) => {
     const baseClasses =
-      "inline-flex w-full h-9 items-center justify-center rounded-full py-0 px-28 text-black text-sm font-medium uppercase tracking-[0.07em] transition-colors duration-200 cursor-pointer md:w-auto";
+      "inline-flex w-full h-9 items-center justify-center rounded-full p-0 text-black text-sm font-medium uppercase tracking-[0.07em] transition-colors duration-200 cursor-pointer md:w-84";
     return (
       <button
         ref={ref}

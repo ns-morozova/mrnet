@@ -24,10 +24,10 @@ const Card = ({
   action,
 }: CardProps) => (
   <article className={`flex h-full flex-col gap-4 rounded-2xl border border-stroke bg-surface/60 p-6 ${accentRing[accent]}`}>
-    {eyebrow && <p className="text-xs uppercase tracking-[0.2em] text-paper/60">{eyebrow}</p>}
+    {eyebrow && <p className="text-xs uppercase tracking-[0.2em] text-white/60">{eyebrow}</p>}
     <div className="space-y-2">
-      <h3 className="text-lg font-semibold text-paper">{title}</h3>
-      <p className="text-sm text-paper/70">{description}</p>
+      <h3 className="text-lg font-semibold text-white">{title}</h3>
+      <p className="text-sm text-white/70">{description}</p>
     </div>
     {action && <div className="mt-auto pt-2">{action}</div>}
   </article>

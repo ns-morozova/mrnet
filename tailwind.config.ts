@@ -5,8 +5,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#000000",
-        paper: "#ffffff",
         accent: {
           flame: "#FF4C00",
           aqua: "#00E4F0",

@@ -11,19 +11,19 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const inputId = id ?? props.name ?? autoId;
 
     return (
-      <div className="flex w-full flex-col gap-2 text-sm text-paper/80">
+      <div className="flex w-full flex-col gap-2 text-sm text-white/80">
         {label && (
-          <label className="font-medium text-paper" htmlFor={inputId}>
+          <label className="font-medium text-white" htmlFor={inputId}>
             {label}
           </label>
         )}
         <input
           ref={ref}
           id={inputId}
-          className={`w-full rounded-full border border-stroke bg-surface px-5 py-3 text-paper placeholder:text-paper/40 transition-colors focus:border-accent-aqua ${className}`.trim()}
+          className={`w-full rounded-full border border-stroke bg-surface px-5 py-3 text-white placeholder:text-white/40 transition-colors focus:border-accent-aqua ${className}`.trim()}
           {...props}
         />
-        {hint && <span className="text-xs text-paper/60">{hint}</span>}
+        {hint && <span className="text-xs text-white/60">{hint}</span>}
       </div>
     );
   },

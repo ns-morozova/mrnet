@@ -52,7 +52,7 @@ const Header = () => {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-stroke text-paper lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-stroke text-white lg:hidden"
           onClick={() => setIsMenuOpen((prev) => !prev)}
           aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
           aria-expanded={isMenuOpen}
@@ -60,13 +60,13 @@ const Header = () => {
           <span className="sr-only">Меню</span>
           <div className="space-y-1.5">
             <span
-              className={`block h-0.5 w-6 bg-paper transition-transform ${
+              className={`block h-0.5 w-6 bg-white transition-transform ${
                 isMenuOpen ? "translate-y-1.5 rotate-45" : ""
               }`}
             />
-            <span className={`block h-0.5 w-6 bg-paper ${isMenuOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-0.5 w-6 bg-white ${isMenuOpen ? "opacity-0" : ""}`} />
             <span
-              className={`block h-0.5 w-6 bg-paper transition-transform ${
+              className={`block h-0.5 w-6 bg-white transition-transform ${
                 isMenuOpen ? "-translate-y-1.5 -rotate-45" : ""
               }`}
             />
@@ -77,7 +77,7 @@ const Header = () => {
       <div
         className={`px-4 sm:px-6 lg:hidden ${
           isMenuOpen ? "max-h-96 border-t border-stroke/50" : "max-h-0"
-        } overflow-hidden bg-ink/95 text-paper transition-[max-height] duration-300`}
+        } overflow-hidden bg-ink/95 text-white transition-[max-height] duration-300`}
       >
         {renderLinks("mobile")}
       </div>

@@ -7,10 +7,10 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: "bg-paper text-ink hover:bg-accent-flame hover:text-ink",
-  secondary: "bg-accent-flame text-ink hover:bg-accent-aqua",
+  primary: "bg-white text-black hover:bg-accent-flame hover:text-black",
+  secondary: "bg-accent-flame text-black hover:bg-accent-aqua",
   ghost:
-    "border border-stroke text-paper hover:border-accent-aqua hover:text-accent-aqua",
+    "border border-stroke text-white hover:border-accent-aqua hover:text-accent-aqua",
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(

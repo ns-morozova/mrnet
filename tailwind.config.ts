@@ -10,6 +10,7 @@ const config: Config = {
           aqua: "#00E4F0",
           lilac: "#B38BCE",
         },
+        grey: "#B0B0B0",
         surface: "#0A0A0A",
         stroke: "rgba(255,255,255,0.08)",
       },

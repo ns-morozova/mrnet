@@ -1,4 +1,12 @@
+"use client";
+
 import Image from "next/image";
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 
@@ -66,12 +74,57 @@ const HeroSection = () => (
           fill
           priority
           className="object-cover"
-          // sizes="(max-width: 1024px) 100vw, 40vw"
         />
       </div>
     </div>
 
-    <div className="grid gap-2.5 lg:grid-cols-3 lg:gap-3">
+    <div className="lg:hidden">
+      <Swiper
+        modules={[Navigation, Pagination]}
+        slidesPerView={1}
+        loop
+        navigation={{ prevEl: ".hero-swiper-prev", nextEl: ".hero-swiper-next" }}
+        pagination={{ el: ".hero-swiper-pagination", clickable: true }}
+        className="hero-swiper"
+      >
+        {CARDS.map((card, i) => (
+          <SwiperSlide key={i}>
+            <Card>
+              <div className="relative h-15 w-max min-w-26">
+                <Image src={card.icon} alt="Icon" fill />
+              </div>
+
+              <p className="uppercase text-lg leading-4.5 tracking-[0.04em]">
+                {card.text}
+              </p>
+            </Card>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <div className="mt-7 flex items-center justify-center gap-4">
+        <button
+          type="button"
+          className="hero-swiper-prev relative h-12 w-12 flex items-center justify-center rounded-full shrink-0 border border-accent-aqua"
+          aria-label="Предыдущая карточка"
+        >
+          <span className="sr-only">Назад</span>
+          <Image src="/icons/arrow.svg" alt="Arrow Prev" width={12} height={26} />
+        </button>
+
+        <div className="hero-swiper-pagination flex items-center gap-2" />
+
+        <button
+          type="button"
+          className="hero-swiper-next h-12 w-12 flex items-center justify-center rounded-full shrink-0 border border-accent-aqua"
+          aria-label="Следующая карточка"
+        >
+          <span className="sr-only">Вперед</span>
+          <Image src="/icons/arrow.svg" alt="Arrow Prev" width={12} height={26} className="rotate-180" />
+        </button>
+      </div>
+    </div>
+
+    <div className="hidden lg:grid lg:grid-cols-3 lg:gap-3">
       {CARDS.map((card, i) => (
         <Card key={i}>
           <div className="relative h-15 w-max min-w-26">

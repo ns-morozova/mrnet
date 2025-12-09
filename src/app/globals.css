@@ -42,6 +42,20 @@ textarea {
   outline-offset: 3px;
 }
 
+.hero-swiper-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  border: 1px solid var(--accent-flame);
+  background: transparent;
+  opacity: 1;
+  transition: background 0.2s ease;
+}
+
+.hero-swiper-pagination .swiper-pagination-bullet-active {
+  background: var(--accent-flame);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

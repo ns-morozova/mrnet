@@ -21,14 +21,17 @@ const FEATURES = [
 const CARDS = [
   {
     icon: "/icons/wifi.svg",
+    iconWidth: 82,
     text: "Надежный и быстрый интернет, который не падает",
   },
   {
     icon: "/icons/control.svg",
+    iconWidth: 106,
     text: "Контроль всей сети через гибкую настройку",
   },
   {
     icon: "/icons/tool.svg",
+    iconWidth: 64,
     text: "Единый инструмент для масштабирования по всей стране",
   },
 ];
@@ -90,10 +93,12 @@ const HeroSection = () => (
         {CARDS.map((card, i) => (
           <SwiperSlide key={i}>
             <Card>
-              <div className="relative h-15 w-max min-w-26">
-                <Image src={card.icon} alt="Icon" fill />
-              </div>
-
+              <Image
+                src={card.icon}
+                alt="Icon"
+                width={card.iconWidth}
+                height={60}
+              />
               <p className="uppercase text-lg leading-4.5 tracking-[0.04em]">
                 {card.text}
               </p>
@@ -127,11 +132,13 @@ const HeroSection = () => (
     <div className="hidden lg:grid lg:grid-cols-3 lg:gap-3">
       {CARDS.map((card, i) => (
         <Card key={i}>
-          <div className="relative h-15 w-max min-w-26">
-            <Image src={card.icon} alt="Icon" fill />
-          </div>
-
-          <p className="uppercase text-lg leading-4.5 tracking-[0.04em] md:text-[20px] md:leading-5">
+          <Image
+            src={card.icon}
+            alt="Icon"
+            width={card.iconWidth}
+            height={60}
+          />
+          <p className="uppercase md:text-[20px] md:leading-5 md:tracking-[0.04em] md:pr-7">
             {card.text}
           </p>
         </Card>

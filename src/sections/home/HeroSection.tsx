@@ -101,7 +101,7 @@ const HeroSection = () => (
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="mt-7 flex items-center justify-center gap-4">
+      <div className="w-full flex items-center justify-center gap-4 mt-7">
         <button
           type="button"
           className="hero-swiper-prev relative h-12 w-12 flex items-center justify-center rounded-full shrink-0 border border-accent-aqua"
@@ -111,7 +111,7 @@ const HeroSection = () => (
           <Image src="/icons/arrow.svg" alt="Arrow Prev" width={12} height={26} />
         </button>
 
-        <div className="hero-swiper-pagination flex items-center gap-2" />
+        <div className="hero-swiper-pagination flex items-center justify-center gap-3" />
 
         <button
           type="button"

@@ -46,14 +46,14 @@ textarea {
   width: 10px;
   height: 10px;
   border-radius: 9999px;
-  border: 1px solid var(--accent-flame);
+  border: 1px solid #00E4F0;
   background: transparent;
   opacity: 1;
   transition: background 0.2s ease;
 }
 
 .hero-swiper-pagination .swiper-pagination-bullet-active {
-  background: var(--accent-flame);
+  background: #00E4F0;
 }
 
 @media (prefers-reduced-motion: reduce) {

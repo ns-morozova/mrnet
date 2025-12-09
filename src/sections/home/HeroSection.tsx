@@ -68,7 +68,7 @@ const HeroSection = () => (
         className="
           relative w-full rounded-lg overflow-hidden
           aspect-67/54
-          lg:w-2/5 lg:aspect-auto lg:h-auto
+          lg:w-[41.15%] lg:aspect-auto lg:h-auto lg:shrink-0
         "
       >
         <Image

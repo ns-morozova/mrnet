@@ -17,9 +17,11 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-grato-grotesk)", "Grato Grotesk", "sans-serif"],
       },
+      maxWidth: {
+        "8xl": "90rem", // 1440px
+      },
     },
   },
-  plugins: [],
 };
 
 export default config;

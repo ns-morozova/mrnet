@@ -36,7 +36,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-black">
-      <div className="max-w-7xl mx-auto flex items-end justify-between px-5 py-7.5 md:px-9 md:py-9">
+      <div className="mx-auto flex max-w-8xl items-end justify-between px-5 py-7.5 md:px-9 md:py-9">
         <Link href="/">
           <Image
             src="/logo.svg"

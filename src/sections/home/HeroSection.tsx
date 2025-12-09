@@ -9,10 +9,30 @@ const FEATURES = [
   "Моментальная техподдержка 24/7 в Telegram",
 ];
 
+const CARDS = [
+  {
+    icon: "/icons/wifi.svg",
+    text: "Надежный и быстрый интернет, который не падает",
+  },
+  {
+    icon: "/icons/control.svg",
+    text: "Контроль всей сети через гибкую настройку",
+  },
+  {
+    icon: "/icons/tool.svg",
+    text: "Единый инструмент для масштабирования по всей стране",
+  },
+];
+
 const HeroSection = () => (
-  <section className="w-full max-w-7xl mx-auto space-y-2.5 px-5 md:px-9">
+  <section className="w-full max-w-8xl mx-auto space-y-2.5 px-5 md:px-9">
     <div className="flex flex-col-reverse gap-2.5 lg:flex-row lg:justify-between lg:gap-3 lg:items-stretch">
-      <article className="bg-linear-to-r from-black to-accent-flame border border-accent-flame rounded-lg px-4 py-2.5 md:px-5 md:py-4 lg:w-3/5">
+      <article className="
+          bg-black
+          bg-[linear-gradient(240.21deg,#FF4C00_0.52%,rgba(0,0,0,0)_74.06%)]
+          border border-accent-flame rounded-lg
+          px-4 py-2.5 md:px-5 md:py-4 lg:w-3/5
+      ">
         <h1 className="uppercase font-normal text-3xl leading-8.5 tracking-[0.03em] mb-4 md:text-[50px] md:leading-[55px]">
           Беспроводной интернет для бизнеса
         </h1>
@@ -20,7 +40,7 @@ const HeroSection = () => (
           от <span className="font-bold">2 990</span> рублей* в месяц! <br /> Установка по любому адресу в РФ!
         </p>
         <Button variant="primary" className="mb-12">
-          Подключить
+          Попробовать
         </Button>
         <ul className="list-disc pl-5 align-bottom font-sans text-lg leading-5.5 tracking-[0.01em] mb-8.5">
           {FEATURES.map((text, i) => (
@@ -48,6 +68,34 @@ const HeroSection = () => (
           // sizes="(max-width: 1024px) 100vw, 40vw"
         />
       </div>
+    </div>
+
+    <div className="grid gap-2.5 lg:grid-cols-3 lg:gap-3">
+      {CARDS.map((card, i) => (
+        <article
+          key={i}
+          className="
+            relative flex flex-col justify-between h-55
+            rounded-lg border border-accent-aqua
+            bg-black
+            p-4 md:p-5 md:pb-4 md:pr-12
+            overflow-hidden
+            bg-[radial-gradient(120%_120%_at_100%_0%,rgba(0,228,240,0.55)_0%,rgba(0,0,0,0)_60%)]
+          "
+        >
+          <div className="relative h-15 w-max min-w-26">
+            <Image
+              src={card.icon}
+              alt="Icon"
+              fill
+            />
+          </div>
+          
+          <p className="uppercase text-lg leading-4.5 tracking-[0.04em] md:text-[20px] md:leading-5">
+            {card.text}
+          </p>
+        </article>
+      ))}
     </div>
   </section>
 );

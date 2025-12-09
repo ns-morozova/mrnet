@@ -48,11 +48,11 @@ const Header = () => {
           />
         </Link>
 
-        <nav className="hidden md:block">{renderLinks("desktop")}</nav>
+        <nav className="hidden lg:block">{renderLinks("desktop")}</nav>
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-stroke text-paper md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-stroke text-paper lg:hidden"
           onClick={() => setIsMenuOpen((prev) => !prev)}
           aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
           aria-expanded={isMenuOpen}
@@ -75,7 +75,7 @@ const Header = () => {
       </div>
 
       <div
-        className={`px-4 sm:px-6 md:hidden ${
+        className={`px-4 sm:px-6 lg:hidden ${
           isMenuOpen ? "max-h-96 border-t border-stroke/50" : "max-h-0"
         } overflow-hidden bg-ink/95 text-paper transition-[max-height] duration-300`}
       >

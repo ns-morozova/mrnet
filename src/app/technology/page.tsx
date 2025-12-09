@@ -1,7 +1,7 @@
 // import Card from "@/components/ui/Card";
 // import Button from "@/components/ui/Button";
 
-export default function AboutPage() {
+export default function TechnologyPage() {
   return (
     <div className="mx-auto flex max-w-7xl px-5 md:px-9">
       <p className="uppercase text-base md:text-2xl">

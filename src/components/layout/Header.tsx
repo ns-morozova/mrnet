@@ -2,12 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { NAV_LINKS } from "@/constants/navigation";
 
 const Header = () => {
-  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const renderLinks = (variant: "desktop" | "mobile") => (

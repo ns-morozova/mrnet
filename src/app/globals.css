@@ -18,7 +18,6 @@
   --color-accent-hot: var(--accent-hot);
   --color-accent-aqua: var(--accent-aqua);
   --color-accent-lilac: var(--accent-lilac);
-  --font-sans: var(--font-grato-grotesk);
 }
 
 * {
@@ -29,8 +28,8 @@ body {
   margin: 0;
   background: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-grato-grotesk), "Grato Grotesk", system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Grato Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   line-height: 1.6;
 }
 

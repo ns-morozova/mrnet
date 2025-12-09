@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { gratoGrotesk } from "@/styles/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,7 +16,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${gratoGrotesk.variable} antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.cdnfonts.com/css/grato-grotesk"
+        />
+      </head>
+      <body className="antialiased">
         <div className="flex min-h-screen flex-col bg-ink text-paper">
           <Header />
           <main className="flex-1">{children}</main>

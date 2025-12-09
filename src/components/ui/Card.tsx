@@ -1,36 +1,26 @@
-import type { ReactNode } from "react";
+import { type HTMLAttributes } from "react";
 
-type CardAccent = "flame" | "aqua" | "lilac";
-
-interface CardProps {
-  title: string;
-  description: string;
-  accent?: CardAccent;
-  eyebrow?: string;
-  action?: ReactNode;
-}
-
-const accentRing: Record<CardAccent, string> = {
-  flame: "border-accent-flame",
-  aqua: "border-accent-aqua",
-  lilac: "border-accent-lilac",
+type FeatureCardProps = HTMLAttributes<HTMLDivElement> & {
+  children: React.ReactNode;
 };
 
-const Card = ({
-  title,
-  description,
-  accent = "flame",
-  eyebrow,
-  action,
-}: CardProps) => (
-  <article className={`flex h-full flex-col gap-4 rounded-2xl border border-stroke bg-surface/60 p-6 ${accentRing[accent]}`}>
-    {eyebrow && <p className="text-xs uppercase tracking-[0.2em] text-white/60">{eyebrow}</p>}
-    <div className="space-y-2">
-      <h3 className="text-lg font-semibold text-white">{title}</h3>
-      <p className="text-sm text-white/70">{description}</p>
+const Card = ({ children, className = "", ...props }: FeatureCardProps) => {
+  return (
+    <div
+      className={`
+        relative flex flex-col justify-between min-h-55
+        border border-accent-aqua rounded-lg
+        bg-black
+        bg-[radial-gradient(120%_120%_at_100%_0%,rgba(0,228,240,0.55)_0%,rgba(0,0,0,0)_60%)]
+        p-4 md:p-5 md:pb-4 md:pr-12
+        overflow-hidden
+        ${className}
+      `.trim()}
+      {...props}
+    >
+      {children}
     </div>
-    {action && <div className="mt-auto pt-2">{action}</div>}
-  </article>
-);
+  );
+};
 
 export default Card;

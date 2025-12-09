@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "@/components/ui/Button";
+import Card from "@/components/ui/Card";
 
 const FEATURES = [
   "Мультироутер с технологией суммирования нескольких каналов связи в один",
@@ -72,29 +73,15 @@ const HeroSection = () => (
 
     <div className="grid gap-2.5 lg:grid-cols-3 lg:gap-3">
       {CARDS.map((card, i) => (
-        <article
-          key={i}
-          className="
-            relative flex flex-col justify-between h-55
-            rounded-lg border border-accent-aqua
-            bg-black
-            p-4 md:p-5 md:pb-4 md:pr-12
-            overflow-hidden
-            bg-[radial-gradient(120%_120%_at_100%_0%,rgba(0,228,240,0.55)_0%,rgba(0,0,0,0)_60%)]
-          "
-        >
+        <Card key={i}>
           <div className="relative h-15 w-max min-w-26">
-            <Image
-              src={card.icon}
-              alt="Icon"
-              fill
-            />
+            <Image src={card.icon} alt="Icon" fill />
           </div>
-          
+
           <p className="uppercase text-lg leading-4.5 tracking-[0.04em] md:text-[20px] md:leading-5">
             {card.text}
           </p>
-        </article>
+        </Card>
       ))}
     </div>
   </section>

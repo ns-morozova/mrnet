@@ -3,7 +3,8 @@ import {
     Technology,
     Summation,
     PersonalSettings,
-    Solution
+    Solution,
+    TestDrive
 } from "@/sections/home";
 
 const HomePage = () => (
@@ -13,6 +14,7 @@ const HomePage = () => (
     <Summation />
     <PersonalSettings />
     <Solution />
+    <TestDrive />
   </div>
 );
 

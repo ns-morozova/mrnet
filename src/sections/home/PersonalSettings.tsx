@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import H2Head from "@/components/ui/H2Head";
 import Card from "@/components/ui/Card";

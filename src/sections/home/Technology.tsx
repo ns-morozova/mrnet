@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import H2Head from "@/components/ui/H2Head";
 import Card from "@/components/ui/Card";
@@ -17,7 +15,7 @@ const Technology = () => (
                 relative w-full rounded-lg overflow-hidden
                 h-55 md:h-82 lg:h-auto
             "
-            >
+        >
             <Image
                 src="/images/technology.jpg"
                 alt="MRNet"

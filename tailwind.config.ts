@@ -15,7 +15,15 @@ const config: Config = {
         stroke: "rgba(255,255,255,0.08)",
       },
       fontFamily: {
-        sans: ["var(--font-grato-grotesk)", "Grato Grotesk", "sans-serif"],
+        sans: [
+          "var(--font-inter)",
+          "Inter",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "sans-serif",
+        ],
       },
       maxWidth: {
         "8xl": "90rem", // 1440px

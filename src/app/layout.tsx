@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "MRNet",
@@ -16,14 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <head>
-        <link rel="preconnect" href="https://fonts.cdnfonts.com" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.cdnfonts.com/css/grato-grotesk"
-        />
-      </head>
-      <body className="antialiased">
+      <body className={`${inter.className} ${inter.variable} antialiased`}>
         <div className="flex min-h-screen flex-col bg-black text-white">
           <Header />
           <main className="flex-1 flex flex-col">{children}</main>

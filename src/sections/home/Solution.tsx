@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -8,6 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import H2Head from "@/components/ui/H2Head";
 import Card from "@/components/ui/Card";
+import SwiperNavButton from "@/components/ui/SwiperNavButton";
 import useSwiperClasses from "@/hooks/useSwiperClasses";
 
 const CARDS = [
@@ -61,25 +61,21 @@ const Solution = () => {
           ))}
         </Swiper>
         <div className="w-full flex items-center justify-center gap-4 mt-7">
-          <button
-            type="button"
-            className={`${prev} relative h-12 w-12 flex items-center justify-center rounded-full shrink-0 border border-accent-aqua cursor-pointer`}
-            aria-label="Предыдущая карточка"
-          >
-            <span className="sr-only">Назад</span>
-            <Image src="/icons/arrow.svg" alt="Arrow Prev" width={12} height={26} />
-          </button>
+          <SwiperNavButton
+            direction="prev"
+            ariaLabel="Предыдущая карточка"
+            srText="Назад"
+            className={prev}
+          />
 
           <div className={`${pagination} swiper-pagination-shared flex items-center justify-center gap-3`} />
 
-          <button
-            type="button"
-            className={`${next} h-12 w-12 flex items-center justify-center rounded-full shrink-0 border border-accent-aqua cursor-pointer`}
-            aria-label="Следующая карточка"
-          >
-            <span className="sr-only">Вперед</span>
-            <Image src="/icons/arrow.svg" alt="Arrow Prev" width={12} height={26} className="rotate-180" />
-          </button>
+          <SwiperNavButton
+            direction="next"
+            ariaLabel="Следующая карточка"
+            srText="Вперед"
+            className={next}
+          />
         </div>
       </div>
 

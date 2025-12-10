@@ -44,7 +44,7 @@ textarea {
   outline-offset: 3px;
 }
 
-.hero-swiper-pagination .swiper-pagination-bullet {
+.swiper-pagination-shared .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
   border-radius: 9999px;
@@ -54,7 +54,7 @@ textarea {
   transition: background 0.2s ease;
 }
 
-.hero-swiper-pagination .swiper-pagination-bullet-active {
+.swiper-pagination-shared .swiper-pagination-bullet-active {
   background: #00E4F0;
 }
 

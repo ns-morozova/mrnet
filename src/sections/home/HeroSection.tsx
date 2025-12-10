@@ -59,7 +59,7 @@ const HeroSection = () => (
             <li key={i}>{text}</li>
           ))}
         </ul>
-        <p className="text-grey text-xs leading-4 -tracking-[0.01em]">
+        <p className="text-grey text-xs leading-4 -tracking-[0.01em] xl:w-3/4">
           * Без учета стоимости оборудования, возможен выкуп оборудования или аренда, стоимость будет зависеть от модели мультироутера
         </p>
       </article>

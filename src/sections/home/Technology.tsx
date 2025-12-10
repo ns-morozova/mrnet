@@ -27,7 +27,7 @@ const Technology = () => (
             />
         </div>
 
-        <Card className="lg:w-[41.15%] lg:shrink-0">
+        <Card variant="flame" className="lg:w-[41.15%] lg:shrink-0">
             <p className="text-lg leading-5.5 mb-16 md:text-2xl md:leading-7.5 md:mb-12.5">
                 Прокачайте свой интернет с высокоскоростными технологиями <span className="font-medium">mrnet</span>. Наш мультироутер суммирует несколько каналов связи в один (технология бондинг), значительно повышая устойчивость и скорость соединения!
             </p>

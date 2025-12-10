@@ -1,6 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { Navigation, Pagination } from "swiper/modules";
+import type { Swiper as SwiperInstance } from "swiper/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -44,6 +47,28 @@ const CARDS = [
 
 const TestDrive = () => {
   const { swiper, prev, next, pagination } = useSwiperClasses("test-drive");
+  const [swiperInstance, setSwiperInstance] = useState<SwiperInstance | null>(null);
+  const [isLocked, setIsLocked] = useState(false);
+
+  useEffect(() => {
+    if (!swiperInstance) {
+      return undefined;
+    }
+
+    const updateLockedState = () => {
+      setIsLocked(swiperInstance.isLocked);
+    };
+
+    updateLockedState();
+
+    swiperInstance.on("lock", updateLockedState);
+    swiperInstance.on("unlock", updateLockedState);
+
+    return () => {
+      swiperInstance.off("lock", updateLockedState);
+      swiperInstance.off("unlock", updateLockedState);
+    };
+  }, [swiperInstance]);
 
   return (
     <section>
@@ -53,60 +78,71 @@ const TestDrive = () => {
         </H2Head>
       </div>
 
-      <div className="w-full px-5 md:px-9">
-        <Swiper
-          modules={[Navigation, Pagination]}
-          slidesPerView={1}
-          spaceBetween={10}
-          loop
-          breakpoints={{
-            1024: {
-              slidesPerView: "auto" as const,
-              spaceBetween: 12,
-            },
-          }}
-          navigation={{ prevEl: `.${prev}`, nextEl: `.${next}` }}
-          pagination={{ el: `.${pagination}`, clickable: true }}
-          className={`test-drive-swiper ${swiper}`}
-        >
-          {CARDS.map((card, i) => (
-            <SwiperSlide key={i} className="!h-auto !w-full lg:!w-[563px]">
-              <Card className="h-full">
-                <div className="flex justify-between gap-6 mb-13.5">
-                  <div className="text-accent-aqua text-xs">
-                    <h3 className="uppercase font-medium">{card.client}</h3>
-                    <p className="md:text-sm md:leading-[19px]">{card.manager}</p>
+      <div className="w-full px-5 md:px-9 lg:px-0 mt-2.5">
+        <div className="lg:pl-9">
+          <Swiper
+            modules={[Navigation, Pagination]}
+            slidesPerView={1}
+            spaceBetween={10}
+            loop
+            breakpoints={{
+              1024: {
+                slidesPerView: "auto" as const,
+                spaceBetween: 12,
+              },
+            }}
+            navigation={{ prevEl: `.${prev}`, nextEl: `.${next}` }}
+            pagination={{ el: `.${pagination}`, clickable: true }}
+            onSwiper={setSwiperInstance}
+            className={[
+              "test-drive-swiper",
+              swiper,
+              isLocked ? "test-drive-swiper--locked" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {CARDS.map((card, i) => (
+              <SwiperSlide key={i} className="!h-auto !w-full lg:!w-[563px]">
+                <Card className="h-full">
+                  <div className="flex justify-between gap-6 mb-13.5">
+                    <div className="text-accent-aqua text-xs">
+                      <h3 className="uppercase font-medium">{card.client}</h3>
+                      <p className="md:text-sm md:leading-[19px]">{card.manager}</p>
+                    </div>
+                    <div className="text-xs leading-4 md:text-sm md:leading-[19px]">
+                      <p>{card.post}</p>
+                      <p>{card.department}</p>
+                    </div>
                   </div>
-                  <div className="text-xs leading-4 md:text-sm md:leading-[19px]">
-                    <p>{card.post}</p>
-                    <p>{card.department}</p>
-                  </div>
-                </div>
-                <blockquote className="text-lg leading-5.5 line-clamp-14 md:line-clamp-10">
-                  {card.quote}
-                </blockquote>
-              </Card>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        <div className="w-full flex items-center justify-center gap-4 mt-7">
-          <SwiperNavButton
-            direction="prev"
-            ariaLabel="Предыдущая карточка"
-            srText="Назад"
-            className={prev}
-          />
-
-          <div className={`${pagination} swiper-pagination-shared flex items-center justify-center gap-3`} />
-
-          <SwiperNavButton
-            direction="next"
-            ariaLabel="Следующая карточка"
-            srText="Вперед"
-            className={next}
-          />
+                  <blockquote className="text-lg leading-5.5 line-clamp-14 md:line-clamp-10">
+                    {card.quote}
+                  </blockquote>
+                </Card>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
+
+        {!isLocked && (
+          <div className="w-full max-w-8xl mx-auto flex items-center justify-center gap-4 mt-7 lg:px-9">
+            <SwiperNavButton
+              direction="prev"
+              ariaLabel="Предыдущая карточка"
+              srText="Назад"
+              className={prev}
+            />
+
+            <div className={`${pagination} swiper-pagination-shared flex items-center justify-center gap-3`} />
+
+            <SwiperNavButton
+              direction="next"
+              ariaLabel="Следующая карточка"
+              srText="Вперед"
+              className={next}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

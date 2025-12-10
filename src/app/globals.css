@@ -58,6 +58,10 @@ textarea {
   background: #00E4F0;
 }
 
+.test-drive-swiper--locked .swiper-wrapper {
+  justify-content: center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

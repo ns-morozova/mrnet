@@ -2,7 +2,8 @@ import {
     HeroSection,
     Technology,
     Summation,
-    PersonalSettings
+    PersonalSettings,
+    Solution
 } from "@/sections/home";
 
 const HomePage = () => (
@@ -11,6 +12,7 @@ const HomePage = () => (
     <Technology />
     <Summation />
     <PersonalSettings />
+    <Solution />
   </div>
 );
 

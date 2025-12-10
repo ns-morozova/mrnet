@@ -28,11 +28,11 @@ const PersonalSettings = () => (
       <div className="space-y-2.5 lg:min-w-[41.15%]">
         {CARDS.map((card, i) => (
           <Card key={i}>
-            <h3 className="uppercase text-lg leading-4.5 tracking-[0.04em] md:text-[20px] md:leading-5">
+            <h3 className="uppercase text-lg leading-4.5 tracking-[0.04em] md:text-[26px] md:leading-6">
               {card.title}
             </h3>
 
-            <div className="space-y-5.5 text-lg leading-5.5">
+            <div className="space-y-6.5 text-lg leading-5.5">
               <p>{card.text1}</p>
               <p>{card.text2}</p>
             </div>

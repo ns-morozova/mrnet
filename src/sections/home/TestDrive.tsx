@@ -1,5 +1,15 @@
+"use client";
+
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import H2Head from "@/components/ui/H2Head";
 import Card from "@/components/ui/Card";
+import SwiperNavButton from "@/components/ui/SwiperNavButton";
+import useSwiperClasses from "@/hooks/useSwiperClasses";
 
 const CARDS = [
   {
@@ -32,36 +42,74 @@ const CARDS = [
   },
 ];
 
-const TestDrive = () => (
-  <section className="w-full max-w-8xl mx-auto px-5 md:px-9">
-    <H2Head className="mb-8.5 md:w-4/5 lg:w-2/3 xl:w-1/2">
-        95% клиентов выбирают <span className="lowercase text-3xl leading-7 md:text-[42px]">mrnet</span> после тест-драйва
-    </H2Head>
+const TestDrive = () => {
+  const { swiper, prev, next, pagination } = useSwiperClasses("test-drive");
 
-    <div className="flex flex-col gap-2.5 lg:flex-row lg:gap-3">
-        {CARDS.map((card, i) => (
-          <Card key={i}>
-            <div className="flex justify-between gap-6 mb-13.5">
-                <div className="text-accent-aqua text-xs">
-                    <h3 className="uppercase font-medium">
-                        {card.client}
-                    </h3>
-                    <p className="md:text-sm md:leading-[19px]">
-                        {card.manager}
-                    </p>
-                </div>
-                <div className="text-xs leading-4 md:text-sm md:leading-[19px]">
+  return (
+    <section>
+      <div className="w-full max-w-8xl mx-auto px-5 md:px-9">
+        <H2Head className="mb-8.5 md:w-4/5 lg:w-2/3 xl:w-1/2">
+          95% клиентов выбирают <span className="lowercase text-3xl leading-7 md:text-[42px]">mrnet</span> после тест-драйва
+        </H2Head>
+      </div>
+
+      <div className="w-full px-5 md:px-9">
+        <Swiper
+          modules={[Navigation, Pagination]}
+          slidesPerView={1}
+          spaceBetween={10}
+          loop
+          breakpoints={{
+            1024: {
+              slidesPerView: "auto" as const,
+              spaceBetween: 12,
+            },
+          }}
+          navigation={{ prevEl: `.${prev}`, nextEl: `.${next}` }}
+          pagination={{ el: `.${pagination}`, clickable: true }}
+          className={`test-drive-swiper ${swiper}`}
+        >
+          {CARDS.map((card, i) => (
+            <SwiperSlide key={i} className="!h-auto !w-full lg:!w-[563px]">
+              <Card className="h-full">
+                <div className="flex justify-between gap-6 mb-13.5">
+                  <div className="text-accent-aqua text-xs">
+                    <h3 className="uppercase font-medium">{card.client}</h3>
+                    <p className="md:text-sm md:leading-[19px]">{card.manager}</p>
+                  </div>
+                  <div className="text-xs leading-4 md:text-sm md:leading-[19px]">
                     <p>{card.post}</p>
                     <p>{card.department}</p>
+                  </div>
                 </div>
-            </div>
-            <blockquote className="text-lg leading-5.5 line-clamp-14 md:line-clamp-10">
-                {card.quote}
-            </blockquote>
-          </Card>
-        ))}
-    </div>
-  </section>
-);
+                <blockquote className="text-lg leading-5.5 line-clamp-14 md:line-clamp-10">
+                  {card.quote}
+                </blockquote>
+              </Card>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <div className="w-full flex items-center justify-center gap-4 mt-7">
+          <SwiperNavButton
+            direction="prev"
+            ariaLabel="Предыдущая карточка"
+            srText="Назад"
+            className={prev}
+          />
+
+          <div className={`${pagination} swiper-pagination-shared flex items-center justify-center gap-3`} />
+
+          <SwiperNavButton
+            direction="next"
+            ariaLabel="Следующая карточка"
+            srText="Вперед"
+            className={next}
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default TestDrive;

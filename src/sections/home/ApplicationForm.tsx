@@ -8,6 +8,34 @@ import Input from "@/components/ui/Input";
 
 type FieldName = "name" | "phone" | "nickname";
 
+const PHONE_PREFIX = "+7";
+const PHONE_PREFIX_WITH_SPACE = `${PHONE_PREFIX} `;
+
+const formatPhoneValue = (rawValue: string) => {
+  if (!rawValue) {
+    return PHONE_PREFIX_WITH_SPACE;
+  }
+  let value = rawValue;
+  if (value.startsWith(PHONE_PREFIX)) {
+    value = value.slice(PHONE_PREFIX.length);
+  } else if (value.startsWith("+")) {
+    value = value.slice(1);
+    if (value.startsWith("7")) {
+      value = value.slice(1);
+    }
+  }
+  value = value.replace(/^\s+/, "");
+  return value ? `${PHONE_PREFIX} ${value}` : PHONE_PREFIX_WITH_SPACE;
+};
+
+const hasFieldValue = (field: FieldName, value: string) => {
+  if (field === "phone") {
+    const digits = value.replace(/\D/g, "");
+    return digits.length > 1;
+  }
+  return value.trim().length > 0;
+};
+
 const initialValues: Record<FieldName, string> = {
   name: "",
   phone: "",
@@ -25,17 +53,31 @@ const ApplicationForm = () => {
   const [consentError, setConsentError] = useState(false);
   const [showFormError, setShowFormError] = useState(false);
 
-  const handleInputChange = (field: FieldName) => (
-    event: ChangeEvent<HTMLInputElement>,
-  ) => {
-    const { value } = event.target;
-    setValues((prev) => ({ ...prev, [field]: value }));
-    if (errors[field] && value.trim()) {
-      setErrors((prev) => ({ ...prev, [field]: false }));
-    }
-    if (showFormError) {
-      setShowFormError(false);
-    }
+  const handleInputChange = (
+    field: FieldName,
+    options?: { enforcePhonePrefix?: boolean },
+  ) =>
+    (event: ChangeEvent<HTMLInputElement>) => {
+      let { value } = event.target;
+      if (options?.enforcePhonePrefix) {
+        value = formatPhoneValue(value);
+      }
+      setValues((prev) => ({ ...prev, [field]: value }));
+      if (errors[field] && hasFieldValue(field, value)) {
+        setErrors((prev) => ({ ...prev, [field]: false }));
+      }
+      if (showFormError) {
+        setShowFormError(false);
+      }
+    };
+
+  const handlePhoneFocus = () => {
+    setValues((prev) => {
+      if (prev.phone.startsWith(PHONE_PREFIX)) {
+        return prev;
+      }
+      return { ...prev, phone: formatPhoneValue(prev.phone) };
+    });
   };
 
   const toggleConsent = () => {
@@ -53,16 +95,10 @@ const ApplicationForm = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const trimmedValues = {
-      name: values.name.trim(),
-      phone: values.phone.trim(),
-      nickname: values.nickname.trim(),
-    };
-
     const nextErrors: Record<FieldName, boolean> = {
-      name: trimmedValues.name === "",
-      phone: trimmedValues.phone === "",
-      nickname: trimmedValues.nickname === "",
+      name: !hasFieldValue("name", values.name),
+      phone: !hasFieldValue("phone", values.phone),
+      nickname: !hasFieldValue("nickname", values.nickname),
     };
     const nextConsentError = !consent;
     const hasErrors =
@@ -82,7 +118,7 @@ const ApplicationForm = () => {
       </div>
 
       <Card className="lg:w-[66.45%] lg:shrink-0">
-        <p className="w-4/5 uppercase text-lg leading-[25px] tracking-[0.04em] mb-5">
+        <p className="w-4/5 uppercase text-lg leading-[25px] tracking-[0.04em] mb-5 md:w-auto">
           Услуга доступна только для юридических лиц
         </p>
 
@@ -104,7 +140,8 @@ const ApplicationForm = () => {
               type="tel"
               placeholder="Ваш телефон +7 (___)___-__-__ *"
               value={values.phone}
-              onChange={handleInputChange("phone")}
+              onFocus={handlePhoneFocus}
+              onChange={handleInputChange("phone", { enforcePhonePrefix: true })}
               error={errors.phone}
             />
             <Input
@@ -143,13 +180,15 @@ const ApplicationForm = () => {
               </span>
           </div>
 
-          {showFormError && (
-            <p className="text-accent-flame leading-5 pl-7.5">
+          {showFormError ? (
+            <p className="text-accent-flame text-xs leading-5 pl-7.5 mb-16">
               Пожалуйста, попробуйте ещё раз! Не все поля формы заполнены корректно.
             </p>
+          ) : (
+            <p className="text-grey text-xs leading-5 pl-7.5 mb-16">
+              * Поля, обязательные для заполнения
+            </p>
           )}
-
-          <p className="text-grey text-xs leading-5 pl-7.5 mb-16">* Поля, обязательные для заполнения</p>
 
           <Button type="submit" variant="secondary">
             Начать!

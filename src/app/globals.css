@@ -29,6 +29,25 @@ svg {
   max-width: 100%;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #0a0a0a inset;
+  -webkit-text-fill-color: #ffffff;
+  caret-color: #ffffff;
+  transition: background-color 9999s ease-out, color 9999s ease-out;
+}
+
+input:-moz-autofill,
+textarea:-moz-autofill {
+  box-shadow: 0 0 0 1000px #0a0a0a inset;
+  -moz-text-fill-color: #ffffff;
+  caret-color: #ffffff;
+}
+
 /* button,
 input,
 textarea {

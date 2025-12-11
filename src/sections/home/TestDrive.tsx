@@ -78,7 +78,7 @@ const TestDrive = () => {
         </H2Head>
       </div>
 
-      <div className="w-full px-5 md:px-9 lg:px-0 mt-2.5">
+      <div className="w-full px-5 md:px-9 lg:px-0">
         <div className="lg:pl-9">
           <Swiper
             modules={[Navigation, Pagination]}
@@ -103,12 +103,12 @@ const TestDrive = () => {
               .join(" ")}
           >
             {CARDS.map((card, i) => (
-              <SwiperSlide key={i} className="!h-auto !w-full lg:!w-[563px]">
+              <SwiperSlide key={i} className="!h-120 !w-full lg:!w-[563px] lg:!h-90">
                 <Card className="h-full">
-                  <div className="flex justify-between gap-6 mb-13.5">
+                  <div className="flex gap-6 mb-13.5">
                     <div className="text-accent-aqua text-xs">
                       <h3 className="uppercase font-medium">{card.client}</h3>
-                      <p className="md:text-sm md:leading-[19px]">{card.manager}</p>
+                      <p className="w-max md:text-sm md:leading-[19px]">{card.manager}</p>
                     </div>
                     <div className="text-xs leading-4 md:text-sm md:leading-[19px]">
                       <p>{card.post}</p>
@@ -124,25 +124,31 @@ const TestDrive = () => {
           </Swiper>
         </div>
 
-        {!isLocked && (
-          <div className="w-full max-w-8xl mx-auto flex items-center justify-center gap-4 mt-7 lg:px-9">
-            <SwiperNavButton
-              direction="prev"
-              ariaLabel="Предыдущая карточка"
-              srText="Назад"
-              className={prev}
-            />
+        <div
+          className={`w-full max-w-8xl mx-auto flex items-center justify-between gap-4 mt-7 lg:px-9 ${
+            isLocked ? "hidden" : ""
+          }`}
+        >
+          <SwiperNavButton
+            direction="prev"
+            ariaLabel="Предыдущая карточка"
+            srText="Назад"
+            className={prev}
+          />
 
-            <div className={`${pagination} swiper-pagination-shared flex items-center justify-center gap-3`} />
+          <div
+            className={`${pagination} swiper-pagination-shared flex items-center justify-center gap-3 ${
+              isLocked ? "hidden" : ""
+            }`}
+          />
 
-            <SwiperNavButton
-              direction="next"
-              ariaLabel="Следующая карточка"
-              srText="Вперед"
-              className={next}
-            />
-          </div>
-        )}
+          <SwiperNavButton
+            direction="next"
+            ariaLabel="Следующая карточка"
+            srText="Вперед"
+            className={next}
+          />
+        </div>
       </div>
     </section>
   );

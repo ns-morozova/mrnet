@@ -41,8 +41,7 @@ const PersonalSettings = () => (
       <div
         className="
           relative w-full rounded-lg overflow-hidden
-          aspect-67/54
-          lg:aspect-auto lg:h-auto
+          h-55 md:h-110 lg:h-auto
         "
       >
         <Image

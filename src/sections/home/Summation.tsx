@@ -12,7 +12,7 @@ const Summation = () => (
       <div key={i}>
         <H2Head className="mb-6 md:mb-8.5">{item.title}</H2Head>
 
-        <div className="relative w-full rounded-lg overflow-hidden h-55 md:h-82 lg:h-113">
+        <div className="relative w-full rounded-lg overflow-hidden h-55 md:h-110 lg:h-113">
           <Image
             src={item.src}
             alt={item.title}

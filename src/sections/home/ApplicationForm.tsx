@@ -1,4 +1,5 @@
 import Card from "@/components/ui/Card";
+import Button from "@/components/ui/Button";
 
 const ApplicationForm = () => (
   <section className="w-full max-w-8xl mx-auto flex flex-col gap-2.5 px-5 md:px-9 lg:flex-row lg:gap-4">
@@ -12,7 +13,10 @@ const ApplicationForm = () => (
         <p className="uppercase text-lg leading-[25px] tracking-[0.04em] mb-4">
           Услуга доступна только для юридических лиц
         </p>
-        
+
+        <Button variant="secondary" className="">
+          Начать!
+        </Button>
     </Card>
   </section>
 );

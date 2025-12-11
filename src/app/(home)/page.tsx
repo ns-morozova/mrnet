@@ -6,6 +6,7 @@ import {
     PersonalSettings,
     Solution,
     TestDrive,
+    Connection,
     ApplicationForm
 } from "@/sections/home";
 
@@ -18,6 +19,7 @@ const HomePage = () => (
     <PersonalSettings />
     <Solution />
     <TestDrive />
+    <Connection />
     <ApplicationForm />
   </div>
 );

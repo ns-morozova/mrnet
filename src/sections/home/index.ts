@@ -5,4 +5,5 @@ export { default as Summation } from "./Summation";
 export { default as PersonalSettings } from "./PersonalSettings";
 export { default as Solution } from "./Solution";
 export { default as TestDrive } from "./TestDrive";
+export { default as Connection } from "./Connection";
 export { default as ApplicationForm } from "./ApplicationForm";

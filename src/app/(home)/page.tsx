@@ -5,7 +5,8 @@ import {
     Summation,
     PersonalSettings,
     Solution,
-    TestDrive
+    TestDrive,
+    ApplicationForm
 } from "@/sections/home";
 
 const HomePage = () => (
@@ -17,6 +18,7 @@ const HomePage = () => (
     <PersonalSettings />
     <Solution />
     <TestDrive />
+    <ApplicationForm />
   </div>
 );
 

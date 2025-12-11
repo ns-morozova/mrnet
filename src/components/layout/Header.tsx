@@ -35,12 +35,42 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
+  const smoothScrollTo = (targetY: number, duration = 1600) => {
+    if (typeof window === "undefined") return;
+  
+    const startY = window.scrollY || window.pageYOffset;
+    const diff = targetY - startY;
+    let start: number | null = null;
+  
+    const easeInOut = (t: number) => 0.5 * (1 - Math.cos(Math.PI * t));
+  
+    const step = (timestamp: number) => {
+      if (start === null) start = timestamp;
+      const time = timestamp - start;
+      const progress = Math.min(time / duration, 1);
+      const eased = easeInOut(progress);
+  
+      window.scrollTo(0, startY + diff * eased);
+  
+      if (time < duration) {
+        requestAnimationFrame(step);
+      }
+    };
+  
+    requestAnimationFrame(step);
+  };
+
   const scrollToApplication = () => {
     const target = document.getElementById("application-form");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    if (!target) return;
+
+    const rect = target.getBoundingClientRect();
+    const headerOffset = headerHeight || 0;
+    const targetY = rect.top + window.scrollY - headerOffset - 16;
+
+    smoothScrollTo(targetY, 1600);
   };
+
 
   const handleApplicationClick = () => {
     setIsMenuOpen(false);
@@ -90,9 +120,6 @@ const Header = () => {
           </Link>
           <span className="text-accent-aqua text-xs leading-[140%]">+ 7 (800) 600-35-38</span>
         </div>
-        
-
-        {/* <nav className="hidden lg:block">{renderLinks("desktop")}</nav> */}
 
         <div className="hidden lg:flex lg:flex-col lg:items-end lg:gap-3.5 lg:mb-1.5 xl:flex-row xl:gap-13 xl:mb-0">
           <nav>{renderLinks("desktop")}</nav>

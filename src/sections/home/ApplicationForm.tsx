@@ -110,7 +110,10 @@ const ApplicationForm = () => {
   };
 
   return (
-    <section className="w-full max-w-8xl mx-auto flex flex-col gap-2.5 px-5 md:px-9 lg:flex-row lg:gap-4">
+    <section
+      id="application-form"
+      className="w-full max-w-8xl mx-auto flex flex-col gap-2.5 px-5 md:px-9 lg:flex-row lg:gap-4"
+    >
       <div className="w-full rounded-lg px-3.5 pt-3.5 pb-17 bg-[linear-gradient(68.23deg,#FF4C00_9.46%,#B38BCE_52.36%,#00E4F0_91.95%)] md:pr-10 lg:pl-5 lg:pb-0 xl:pb-40">
         <p className="uppercase text-black font-medium text-lg leading-[25px] tracking-[0.04em] md:text-[32px] md:leading-10">
           Хотите узнать больше, рассчитать стоимость <br /> или забрать <br /> устройство <br /> на бесплатный тест?

@@ -33,7 +33,7 @@ const Solution = () => {
 
   return (
     <section className="w-full max-w-8xl mx-auto px-5 md:px-9">
-      <H2Head className="mb-8.5 lg:w-7/10 xl:w-11/20">
+      <H2Head className="mb-6 md:mb-8.5 lg:w-7/10 xl:w-11/20">
         Решение, созданное айтишниками для айтишников
       </H2Head>
 

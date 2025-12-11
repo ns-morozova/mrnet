@@ -17,8 +17,8 @@ const CARDS = [
 ];
 
 const PersonalSettings = () => (
-  <section className="w-full max-w-8xl mx-auto flex flex-col gap-8.5 px-5 md:px-9">
-    <H2Head className="lg:w-14/15 xl:w-3/4">
+  <section className="w-full max-w-8xl mx-auto px-5 md:px-9">
+    <H2Head className="mb-6 md:mb-8.5 lg:w-14/15 xl:w-3/4">
       Настраивайте сеть и управляйте всеми устройствами через единый личный кабинет
     </H2Head>
 
@@ -55,7 +55,7 @@ const PersonalSettings = () => (
       </div>
     </div>
 
-    <Button variant="primary" className="mx-auto">
+    <Button variant="primary" className="mx-auto mt-8.5">
       Испытать все возможности
     </Button>
   </section>

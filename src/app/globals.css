@@ -62,6 +62,21 @@ textarea {
   justify-content: center;
 }
 
+@layer utilities {
+  .animate-clients-marquee {
+    animation: clients-marquee 32s linear infinite;
+  }
+}
+
+@keyframes clients-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

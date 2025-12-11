@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button";
 
 const Technology = () => (
   <section className="w-full max-w-8xl mx-auto px-5 md:px-9">
-    <H2Head className="hidden lg:block mb-8.5">
+    <H2Head className="hidden lg:block mb-6 md:mb-8.5">
       Технология
     </H2Head>
 

@@ -73,7 +73,7 @@ const TestDrive = () => {
   return (
     <section>
       <div className="w-full max-w-8xl mx-auto px-5 md:px-9">
-        <H2Head className="mb-8.5 md:w-4/5 lg:w-2/3 xl:w-1/2">
+        <H2Head className="mb-6 md:mb-8.5 md:w-4/5 lg:w-2/3 xl:w-1/2">
           95% клиентов выбирают <span className="lowercase text-3xl leading-7 md:text-[42px]">mrnet</span> после тест-драйва
         </H2Head>
       </div>

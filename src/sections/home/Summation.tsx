@@ -10,7 +10,7 @@ const Summation = () => (
   <section className="w-full max-w-8xl mx-auto grid gap-11 px-5 md:px-9 lg:grid-cols-2 lg:gap-3">
     {ITEMS.map((item, i) => (
       <div key={i}>
-        <H2Head className="mb-8.5">{item.title}</H2Head>
+        <H2Head className="mb-6 md:mb-8.5">{item.title}</H2Head>
 
         <div className="relative w-full rounded-lg overflow-hidden h-55 md:h-82 lg:h-113">
           <Image

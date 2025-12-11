@@ -32,12 +32,12 @@ const Card = ({
   `;
 
   return (
-    <div
+    <article
       className={`${baseClasses} ${variantClasses[variant]} ${className}`.trim()}
       {...props}
     >
       {children}
-    </div>
+    </article>
   );
 };
 

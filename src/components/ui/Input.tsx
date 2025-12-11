@@ -17,7 +17,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       "w-full h-13 rounded-full border bg-black pl-7.5 pr-5 py-0 text-white placeholder:text-grey transition-colors";
 
     return (
-      <div className="flex w-full flex-col gap-2">
+      <div className="flex w-full flex-col gap-2 md:text-lg">
         {label && (
           <label className="font-medium text-white" htmlFor={inputId}>
             {label}
@@ -30,7 +30,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           className={`${baseClasses} ${borderClasses} ${className}`.trim()}
           {...props}
         />
-        {hint && <span className="text-xs text-white/60">{hint}</span>}
+        {hint && <span className="text-xs text-grey">{hint}</span>}
       </div>
     );
   },

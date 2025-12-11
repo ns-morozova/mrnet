@@ -16,10 +16,10 @@ const marqueeSequence = [...marqueeBase, ...marqueeBase];
 const Clients = () => (
   <section>
     <div className="w-full max-w-8xl mx-auto px-5 md:px-9">
-      <H2Head className="mb-6 w-2/3 md:mb-8.5">500+ клиентов уже с нами</H2Head>
+      <H2Head className="w-2/3 mb-5 md:w-auto md:mb-7">500+ клиентов уже с нами</H2Head>
     </div>
     
-    <div className="overflow-hidden">
+    <div className="pt-2 md:pt-6 overflow-hidden">
         <div className="animate-clients-marquee flex w-max gap-3 will-change-transform md:gap-5">
             {marqueeSequence.map((logo, index) => (
             <div

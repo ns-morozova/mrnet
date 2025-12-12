@@ -5,8 +5,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Image from "next/image";
 import H2Head from "@/components/ui/H2Head";
 import Card from "@/components/ui/Card";
+import Button from "@/components/ui/Button";
 import SwiperNavButton from "@/components/ui/SwiperNavButton";
 import useSwiperClasses from "@/hooks/useSwiperClasses";
 
@@ -37,7 +39,7 @@ const Solution = () => {
         Решение, созданное айтишниками для айтишников
       </H2Head>
 
-      <div className="lg:hidden">
+      <div className="lg:hidden mb-11">
         <Swiper
           modules={[Navigation, Pagination]}
           slidesPerView={1}
@@ -79,7 +81,7 @@ const Solution = () => {
         </div>
       </div>
 
-      <div className="hidden lg:grid lg:grid-cols-3 lg:gap-3">
+      <div className="hidden lg:grid lg:grid-cols-3 lg:gap-3 lg:mb-3">
         {CARDS.map((card, i) => (
           <Card key={i} variant="flame" className="justify-start">
             <h3 className="h-23 uppercase tracking-[0.04em] md:text-[26px] md:leading-7.5">
@@ -92,6 +94,29 @@ const Solution = () => {
           </Card>
         ))}
       </div>
+
+      <div className="flex flex-col-reverse gap-2.5 mb-2.5 lg:grid lg:grid-cols-2 lg:gap-3 lg:mb-8.5">
+        <article className="h-77.5 lg:h-99.5 p-3.5 text-black flex flex-col justify-between rounded-lg bg-[linear-gradient(68.23deg,#FF4C00_9.46%,#B38BCE_52.36%,#00E4F0_91.95%)] md:pt-4.5 md:pb-5 md:px-7.5">
+            <h2 className="uppercase font-medium text-2xl leading-8 md:text-[45px] md:leading-[53px]">
+                Попробуйте <br /> 14 дней бесплатно
+            </h2>
+            <p className="text-lg leading-5.5 md:text-2xl md:leading-7.5 xl:w-49/50">
+                Развивайте свою инфру с <span className="font-medium">mrnet</span>. Без лишних затрат и костылей. Высокоскоростной интернет — удобно, эффективно!
+            </p>
+        </article>
+        <div className="relative w-full rounded-lg overflow-hidden h-55 md:h-110 lg:h-auto">
+            <Image
+                src="/images/solution.jpg"
+                alt="Solution"
+                fill
+                className="object-cover"
+            />
+        </div>
+      </div>
+
+      <Button variant="secondary" className="lg:mx-auto">
+        Начать!
+      </Button>
     </section>
   );
 };

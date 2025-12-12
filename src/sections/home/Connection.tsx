@@ -343,8 +343,8 @@ const Connection = () => (
                             key={`desktop-city-${city.number}`}
                             className="absolute text-black"
                             style={{
-                                top: `${city.position.desktop.top}%`,
-                                left: `${city.position.desktop.left - POINT_LEFT_OFFSET}%`,
+                                top: `${city.position.desktop.top + 0.5}%`,
+                                left: `${city.position.desktop.left - POINT_LEFT_OFFSET - 1}%`,
                             }}
                         >
                             <div className="flex items-end">
@@ -380,6 +380,17 @@ const Connection = () => (
                     </div>
                 </div>
             ))}
+        </div>
+    </div>
+
+    <div className="hidden lg:flex justify-center gap-16 text-lg">
+        <div className="flex items-center gap-3">
+            <div className="w-2.5 h-2.5 shrink-0 bg-accent-flame rotate-45"></div>
+            <span>Наши клиенты</span>
+        </div>
+        <div className="flex items-center gap-3">
+        <div className="w-2.5 h-2.5 shrink-0 bg-white"></div>
+            <span>Отделы продаж</span>
         </div>
     </div>
   </section>

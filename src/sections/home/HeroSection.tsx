@@ -131,7 +131,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="hidden lg:grid lg:grid-cols-3 lg:gap-3">
+      <div className="hidden relative lg:grid lg:grid-cols-3 lg:gap-3">
         {CARDS.map((card, i) => (
           <Card key={i}>
             <Image
@@ -145,6 +145,15 @@ const HeroSection = () => {
             </p>
           </Card>
         ))}
+
+        <div className="absolute -bottom-9 right-0 w-13 h-13 rounded-full bg-white/50 border border-white flex items-center justify-center cursor-pointer">
+          <Image
+            src="/icons/tel.svg"
+            alt=""
+            width={23}
+            height={23}
+          />
+        </div>
       </div>
     </section>
   );

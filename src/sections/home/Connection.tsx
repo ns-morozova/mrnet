@@ -338,28 +338,40 @@ const Connection = () => (
                     ))}
                 </div>
                 <div className="absolute inset-0 hidden lg:block">
-                    {CITIES.map((city) => (
-                        <div
-                            key={`desktop-city-${city.number}`}
-                            className="absolute text-black"
-                            style={{
-                                top: `${city.position.desktop.top + 0.5}%`,
-                                left: `${city.position.desktop.left - POINT_LEFT_OFFSET - 1}%`,
-                            }}
-                        >
-                            <div className="flex items-end">
-                                <span className="inline-flex h-3 w-3 shrink-0 bg-white" />
-                                <div className="mb-3 w-max bg-accent-aqua leading-5.5 px-1">
-                                    <p className="font-medium">
-                                        {city.city}
-                                    </p>
-                                    <p>
-                                        {city.tel}
-                                    </p>
+                    {CITIES.map((city) => {
+                        const isChelyabinsk = city.number === 5;
+
+                        return (
+                            <div
+                                key={`desktop-city-${city.number}`}
+                                className="absolute text-black"
+                                style={{
+                                    top: `${city.position.desktop.top + 0.5}%`,
+                                    left: `${city.position.desktop.left - POINT_LEFT_OFFSET - 1}%`,
+                                }}
+                            >
+                                <div
+                                    className={`flex ${
+                                        isChelyabinsk ? "items-start" : "items-end"
+                                    }`}
+                                >
+                                    <span className="inline-flex h-3 w-3 shrink-0 bg-white" />
+                                    <div
+                                        className={`${
+                                            isChelyabinsk ? "mt-3" : "mb-3"
+                                        } w-max bg-accent-aqua leading-5.5 px-1`}
+                                    >
+                                        <p className="font-medium">
+                                            {city.city}
+                                        </p>
+                                        <p>
+                                            {city.tel}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </div>

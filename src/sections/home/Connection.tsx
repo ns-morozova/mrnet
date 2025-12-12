@@ -45,6 +45,8 @@ const CITIES = [
     },
 ];
 
+const POINT_LEFT_OFFSET = 3;
+
 type MapPoint = {
     id: number;
     desktop: {
@@ -245,7 +247,7 @@ const Connection = () => (
                             className="absolute w-[18.6667vw] max-w-[140px]"
                             style={{
                                 top: `${point.mobile.top}%`,
-                                left: `${point.mobile.left}%`,
+                                left: `${point.mobile.left - POINT_LEFT_OFFSET}%`,
                             }}
                         >
                             <Image
@@ -265,7 +267,7 @@ const Connection = () => (
                             className="absolute w-[11.1111vw] max-w-40"
                             style={{
                                 top: `${point.desktop.top}%`,
-                                left: `${point.desktop.left}%`,
+                                left: `${point.desktop.left - POINT_LEFT_OFFSET}%`,
                             }}
                         >
                             <Image

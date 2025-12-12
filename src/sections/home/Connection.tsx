@@ -266,7 +266,7 @@ const MAP_POINTS: MapPoint[] = [
 ];
 
 const Connection = () => (
-  <section className="w-full max-w-8xl mx-auto px-5 md:px-9">
+  <section className="w-full max-w-8xl mx-auto px-5 md:px-9 overflow-hidden">
     <H2Head className="mb-5 md:mb-7 md:w-17/20 lg:w-4/5 xl:w-auto">
       Подключаем к стабильному интернету по всей России
     </H2Head>

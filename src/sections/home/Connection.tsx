@@ -2,62 +2,105 @@ import Image from "next/image";
 
 import H2Head from "@/components/ui/H2Head";
 
-const CITIES = [
+type Coordinates = {
+    top: number;
+    left: number;
+};
+
+type ResponsiveCoordinates = {
+    desktop: Coordinates;
+    mobile: Coordinates;
+};
+
+type City = {
+    number: number;
+    city: string;
+    tel: string;
+    position: ResponsiveCoordinates;
+};
+
+type MapPoint = {
+    id: number;
+    desktop: Coordinates;
+    mobile: Coordinates;
+};
+
+const POINT_LEFT_OFFSET = 3;
+
+const CITIES: City[] = [
     {
         number: 1,
         city: "Москва",
         tel: "8 800 600 35 38",
+        position: {
+            desktop: { top: 41.27273, left: 15.66434 },
+            mobile: { top: 48.87095, left: 17.78388 },
+        },
     },
     {
         number: 2,
         city: "Санкт-Петербург",
         tel: "8 931 394 46 11",
+        position: {
+            desktop: { top: 30.54545, left: 17.45455 },
+            mobile: { top: 40.52418, left: 18.92745 },
+        },
     },
     {
         number: 3,
         city: "Казань",
         tel: "8 904 769 96 54",
+        position: {
+            desktop: { top: 50.72727, left: 22.15385 },
+            mobile: { top: 54.19353, left: 24.84228 },
+        },
     },
     {
         number: 4,
         city: "Краснодар",
         tel: "8 993 307 01 77",
+        position: {
+            desktop: { top: 58.18182, left: 5.37063 },
+            mobile: { top: 59.75804, left: 4.49527 },
+        },
     },
     {
         number: 5,
         city: "Челябинск",
         tel: "8 922 636 86 06",
+        position: {
+            desktop: { top: 68.90909, left: 26.96503 },
+            mobile: { top: 60.96772, left: 28.98266 },
+        },
     },
     {
         number: 6,
         city: "Екатеринбург",
         tel: "8 902 635 22 39",
+        position: {
+            desktop: { top: 57.27273, left: 30.20979 },
+            mobile: { top: 57.33869, left: 34.06941 },
+        },
     },
     {
         number: 7,
         city: "Новосибирск",
         tel: "8 902 635 22 39",
+        position: {
+            desktop: { top: 71.45455, left: 45.2028 },
+            mobile: { top: 69.19352, left: 47.55522 },
+        },
     },
     {
         number: 8,
         city: "Владивосток",
         tel: "8 902 635 22 39",
+        position: {
+            desktop: { top: 82.90909, left: 91.52448 },
+            mobile: { top: 74.03223, left: 91.32496 },
+        },
     },
 ];
-
-const POINT_LEFT_OFFSET = 3;
-
-type MapPoint = {
-    id: number;
-    desktop: {
-        top: number;
-        left: number;
-    };
-    mobile: {
-        top: number;
-        left: number;
-    };
-};
 
 const MAP_POINTS: MapPoint[] = [
     {
@@ -277,6 +320,44 @@ const Connection = () => (
                                 height={160}
                                 className="w-full h-auto"
                             />
+                        </div>
+                    ))}
+                </div>
+                <div className="absolute inset-0 lg:hidden">
+                    {CITIES.map((city) => (
+                        <div
+                            key={`mobile-city-${city.number}`}
+                            className="absolute flex h-4 w-4 shrink-0 -translate-x-1/2 -translate-y-1/2 items-center justify-center bg-accent-aqua text-xs leading-none text-black"
+                            style={{
+                                top: `${city.position.mobile.top}%`,
+                                left: `${city.position.mobile.left - POINT_LEFT_OFFSET}%`,
+                            }}
+                        >
+                            {city.number}
+                        </div>
+                    ))}
+                </div>
+                <div className="absolute inset-0 hidden lg:block">
+                    {CITIES.map((city) => (
+                        <div
+                            key={`desktop-city-${city.number}`}
+                            className="absolute text-black"
+                            style={{
+                                top: `${city.position.desktop.top}%`,
+                                left: `${city.position.desktop.left - POINT_LEFT_OFFSET}%`,
+                            }}
+                        >
+                            <div className="flex items-end">
+                                <span className="inline-flex h-3 w-3 shrink-0 bg-white" />
+                                <div className="mb-3 w-max bg-accent-aqua leading-5.5 px-1">
+                                    <p className="font-medium">
+                                        {city.city}
+                                    </p>
+                                    <p>
+                                        {city.tel}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>

@@ -48,13 +48,7 @@ textarea:-moz-autofill {
   caret-color: #ffffff;
 }
 
-/* button,
-input,
-textarea {
-  font: inherit;
-} */
-
-.button {
+button {
   cursor: pointer;
 }
 
@@ -79,6 +73,20 @@ textarea {
 
 .test-drive-swiper--locked .swiper-wrapper {
   justify-content: center;
+}
+
+@layer components {
+  .test-drive-slide {
+    width: 100% !important;
+    height: 480px !important;
+  }
+
+  @media (min-width: 1024px) {
+    .test-drive-slide {
+      width: 563px !important;
+      height: 360px !important;
+    }
+  }
 }
 
 @layer utilities {

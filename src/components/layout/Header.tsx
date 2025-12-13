@@ -136,7 +136,7 @@ const Header = () => {
               <button
                 type="button"
                 onClick={() => handleScrollTargetClick(item.sectionId)}
-                className="uppercase transition-colors duration-200 hover:text-accent-aqua cursor-pointer"
+                className="uppercase transition-colors duration-200 hover:text-accent-aqua"
               >
                 {item.label}
               </button>
@@ -183,7 +183,7 @@ const Header = () => {
           <button
             type="button"
             onClick={handleApplicationClick}
-            className="uppercase text-accent-aqua text-xs leading-[140%] tracking-[0.09em] cursor-pointer"
+            className="uppercase text-accent-aqua text-xs leading-[140%] tracking-[0.09em]"
           >
             Оставить заявку
           </button>
@@ -229,7 +229,7 @@ const Header = () => {
           <button
             type="button"
             onClick={handleApplicationClick}
-            className="w-max uppercase text-accent-aqua text-xs tracking-[0.09em] cursor-pointer"
+            className="w-max uppercase text-accent-aqua text-xs tracking-[0.09em]"
           >
             Оставить заявку
           </button>

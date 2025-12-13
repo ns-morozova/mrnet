@@ -103,7 +103,7 @@ const TestDrive = () => {
               .join(" ")}
           >
             {CARDS.map((card, i) => (
-              <SwiperSlide key={i} className="!h-120 !w-full lg:!w-[563px] lg:!h-90">
+              <SwiperSlide key={i} className="test-drive-slide">
                 <Card className="h-full justify-start">
                   <div className="flex gap-6 mb-13.5">
                     <div className="text-accent-aqua text-xs">

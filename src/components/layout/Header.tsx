@@ -2,11 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 import { NAV_LINKS } from "@/constants/navigation";
 
 const Header = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerBarRef = useRef<HTMLDivElement>(null);
@@ -35,7 +39,7 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
-  const smoothScrollTo = (targetY: number, duration = 1600) => {
+  const smoothScrollTo = useCallback((targetY: number, duration = 1600) => {
     if (typeof window === "undefined") return;
   
     const startY = window.scrollY || window.pageYOffset;
@@ -58,9 +62,9 @@ const Header = () => {
     };
   
     requestAnimationFrame(step);
-  };
+  }, []);
 
-  const scrollToApplication = () => {
+  const scrollToApplication = useCallback(() => {
     const target = document.getElementById("application-form");
     if (!target) return;
 
@@ -69,11 +73,29 @@ const Header = () => {
     const targetY = rect.top + window.scrollY - headerOffset - 16;
 
     smoothScrollTo(targetY, 1600);
-  };
+  }, [headerHeight, smoothScrollTo]);
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const scrollTarget = searchParams.get("scrollTo");
+    if (scrollTarget !== "application-form") return;
+
+    const id = window.requestAnimationFrame(() => {
+      scrollToApplication();
+      router.replace("/", { scroll: false });
+    });
+
+    return () => window.cancelAnimationFrame(id);
+  }, [pathname, searchParams, router, scrollToApplication]);
 
 
   const handleApplicationClick = () => {
     setIsMenuOpen(false);
+    if (pathname !== "/") {
+      router.push("/?scrollTo=application-form", { scroll: false });
+      return;
+    }
+
     scrollToApplication();
   };
 

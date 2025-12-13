@@ -52,8 +52,51 @@ const INSTRUCTION_LINKS = [
 ];
 
 const Footer = () => (
-  <footer className="w-full max-w-8xl mx-auto flex flex-col gap-6 pt-10 lg:flex-row lg:justify-between">
+  <footer className="w-full max-w-8xl mx-auto flex flex-col gap-6 pt-16 lg:flex-row lg:justify-between lg:pt-18">
     <div className="px-5 md:px-9 lg:hidden">
+      <div className="space-y-4 mb-12 text-[11px] leading-4 tracking-[0.01em] md:text-xs md:leading-5">
+        <div className="flex gap-5 md:gap-10">
+          <div>
+            {COMPANY_INFO.map((item) => (
+              <p key={item}>
+                {item}
+              </p>
+            ))}
+          </div>
+          <div className="shrink-0">
+            <h3>Служба поддержки:</h3>
+            <p>Тел: <span className="underline">8 (495) 308–41–51</span></p>
+            <p>Тел: <span className="underline">8 (800) 600–35–38</span></p>
+            <p>Почта: <span className="underline">helpdesk@mrnet.ru</span></p>
+            <p>График работы: 24/7</p>
+          </div>
+        </div>
+
+        <div>
+          <p>Почта: <span className="underline">info@mrnet.ru</span></p>
+          <p>График работы: по будням</p>
+          <p>с 9:00 до 19:00 по Москве</p>
+        </div>
+
+        <div className="underline">
+          <div className="flex flex-col mb-4">
+            {LEGAL_LINKS.map((item) => (
+              <a key={item.label} href={item.href}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="flex flex-col">
+            {INSTRUCTION_LINKS.map((item) => (
+              <a key={item.label} href={item.href}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="flex gap-7.5">
         <div className="flex flex-col gap-4">
           <Link href="/">

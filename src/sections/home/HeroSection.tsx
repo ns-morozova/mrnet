@@ -42,7 +42,7 @@ const HeroSection = () => {
   const { swiper, prev, next, pagination } = useSwiperClasses("hero");
 
   return (
-    <section className="w-full max-w-8xl mx-auto space-y-2.5 px-5 md:px-9">
+    <section className="w-full max-w-8xl mx-auto space-y-2.5 px-5 pt-2 md:px-9 xl:pt-6">
       <div className="flex flex-col-reverse gap-2.5 lg:flex-row lg:justify-between lg:gap-3 lg:items-stretch">
         <article
           className="
@@ -146,7 +146,7 @@ const HeroSection = () => {
           </Card>
         ))}
 
-        <div className="absolute -bottom-9 right-0 w-13 h-13 rounded-full bg-white/50 border border-white flex items-center justify-center cursor-pointer">
+        <div className="absolute -bottom-9 right-0 w-13 h-13 rounded-full bg-white/50 border border-white flex items-center justify-center cursor-pointer hover:scale-105 transition duration-200">
           <Image
             src="/icons/tel.svg"
             alt=""

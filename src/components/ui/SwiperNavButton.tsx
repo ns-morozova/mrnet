@@ -10,7 +10,7 @@ type SwiperNavButtonProps = {
 };
 
 const baseClassName =
-  "relative h-12 w-12 flex items-center justify-center rounded-full shrink-0 border border-accent-aqua cursor-pointer";
+  "relative h-12 w-12 flex items-center justify-center rounded-full shrink-0 border border-accent-aqua cursor-pointer transition-all duration-200 hover:shadow-[0_0_0_1px_rgba(0,228,240,0.25),0_0_24px_rgba(0,228,240,0.7)]";
 
 const SwiperNavButton = ({ direction, ariaLabel, srText, className }: SwiperNavButtonProps) => (
   <button

@@ -374,6 +374,16 @@ const Connection = () => (
                     })}
                 </div>
             </div>
+
+            <div className="lg:hidden absolute -top-1.5 -left-3 flex items-center">
+                <Image
+                    src="/images/land/point.svg"
+                    alt=""
+                    width={70}
+                    height={70}
+                />
+                <span className="uppercase text-xs leading-[19px] tracking-[0.07em]">Наши клиенты</span>
+            </div>
         </div>
     </div>
 

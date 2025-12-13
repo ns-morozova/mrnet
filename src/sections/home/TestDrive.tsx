@@ -71,7 +71,7 @@ const TestDrive = () => {
   }, [swiperInstance]);
 
   return (
-    <section>
+    <section id="test-drive">
       <div className="w-full max-w-8xl mx-auto px-5 md:px-9">
         <H2Head className="mb-5 md:mb-7 md:w-4/5 lg:w-2/3 xl:w-1/2">
           95% клиентов выбирают <span className="lowercase text-3xl leading-7 md:text-[42px]">mrnet</span> после тест-драйва

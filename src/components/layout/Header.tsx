@@ -6,6 +6,10 @@ import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 import { NAV_LINKS } from "@/constants/navigation";
+import type { NavLink } from "@/constants/navigation";
+
+const isScrollLink = (link: NavLink): link is Extract<NavLink, { sectionId: string }> =>
+  "sectionId" in link;
 
 const Header = () => {
   const router = useRouter();
@@ -64,39 +68,55 @@ const Header = () => {
     requestAnimationFrame(step);
   }, []);
 
-  const scrollToApplication = useCallback(() => {
-    const target = document.getElementById("application-form");
-    if (!target) return;
+  const scrollToElement = useCallback(
+    (elementId: string) => {
+      const target = document.getElementById(elementId);
+      if (!target) return false;
 
-    const rect = target.getBoundingClientRect();
-    const headerOffset = headerHeight || 0;
-    const targetY = rect.top + window.scrollY - headerOffset - 16;
+      const rect = target.getBoundingClientRect();
+      const headerOffset = headerHeight || 0;
+      const targetY = rect.top + window.scrollY - headerOffset - 16;
 
-    smoothScrollTo(targetY, 1600);
-  }, [headerHeight, smoothScrollTo]);
+      smoothScrollTo(targetY, 1600);
+      return true;
+    },
+    [headerHeight, smoothScrollTo],
+  );
 
   useEffect(() => {
     if (pathname !== "/") return;
     const scrollTarget = searchParams.get("scrollTo");
-    if (scrollTarget !== "application-form") return;
+    if (!scrollTarget) return;
 
     const id = window.requestAnimationFrame(() => {
-      scrollToApplication();
-      router.replace("/", { scroll: false });
+      const scrolled = scrollToElement(scrollTarget);
+      if (scrolled) {
+        const params = new URLSearchParams(searchParams);
+        params.delete("scrollTo");
+        const query = params.toString();
+        router.replace(query ? `/?${query}` : "/", { scroll: false });
+      }
     });
 
     return () => window.cancelAnimationFrame(id);
-  }, [pathname, searchParams, router, scrollToApplication]);
+  }, [pathname, searchParams, router, scrollToElement]);
 
+  const handleScrollTargetClick = useCallback(
+    (elementId: string) => {
+      setIsMenuOpen(false);
+
+      if (pathname !== "/") {
+        router.push(`/?scrollTo=${elementId}`, { scroll: false });
+        return;
+      }
+
+      scrollToElement(elementId);
+    },
+    [pathname, router, scrollToElement],
+  );
 
   const handleApplicationClick = () => {
-    setIsMenuOpen(false);
-    if (pathname !== "/") {
-      router.push("/?scrollTo=application-form", { scroll: false });
-      return;
-    }
-
-    scrollToApplication();
+    handleScrollTargetClick("application-form");
   };
 
   const renderLinks = (variant: "desktop" | "mobile") => (
@@ -108,9 +128,24 @@ const Header = () => {
       }
     >
       {NAV_LINKS.map((item) => {
-       
+        const key = isScrollLink(item) ? item.sectionId : item.href;
+
+        if (isScrollLink(item)) {
+          return (
+            <li key={key}>
+              <button
+                type="button"
+                onClick={() => handleScrollTargetClick(item.sectionId)}
+                className="uppercase transition-colors duration-200 hover:text-accent-aqua cursor-pointer"
+              >
+                {item.label}
+              </button>
+            </li>
+          );
+        }
+
         return (
-          <li key={item.href} className="uppercase transition-colors duration-200 hover:text-accent-aqua">
+          <li key={key} className="uppercase transition-colors duration-200 hover:text-accent-aqua">
             <Link
               href={item.href}
               onClick={variant === "mobile" ? () => setIsMenuOpen(false) : undefined}
@@ -162,7 +197,7 @@ const Header = () => {
           aria-expanded={isMenuOpen}
         >
           <span className="sr-only">Меню</span>
-          <div className="relative h-3 w-7">
+          <div className="relative h-3 w-7 cursor-pointer">
             <span
               className={`absolute left-0 h-px w-full bg-accent-aqua transition-all duration-300 ${
                 isMenuOpen

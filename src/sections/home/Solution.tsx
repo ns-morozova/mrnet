@@ -114,7 +114,7 @@ const Solution = () => {
         </div>
       </div>
 
-      <Button variant="secondary" className="lg:mx-auto">
+      <Button variant="secondary" className="md:mx-auto">
         Начать!
       </Button>
     </section>

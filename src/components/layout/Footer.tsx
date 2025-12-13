@@ -53,7 +53,7 @@ const INSTRUCTION_LINKS = [
 
 const Footer = () => (
   <footer className="w-full max-w-8xl mx-auto flex flex-col gap-6 pt-10 lg:flex-row lg:justify-between">
-    <div className="px-5 md:px-9">
+    <div className="px-5 md:px-9 lg:hidden">
       <div className="flex gap-7.5">
         <div className="flex flex-col gap-4">
           <Link href="/">
@@ -70,7 +70,7 @@ const Footer = () => (
             Категорически новый <br /> интернет для бизнеса
           </p>
         </div>
-        <span className="lg:hidden text-[11px] leading-4 mt-2">©2025 mrnet.ru <br /> Все права защищены</span>
+        <span className="text-[11px] leading-4 mt-2">©2025 mrnet.ru <br /> Все права защищены</span>
       </div>
     </div>
 
@@ -82,6 +82,71 @@ const Footer = () => (
         priority
         className="object-cover"
       />
+    </div>
+
+    <div className="hidden lg:flex w-full justify-between gap-6 pl-9 pr-3 pb-20">
+        <div className="flex flex-col justify-between w-1/4">
+          <div className="text-xs leading-5 tracking-[0.01em]">
+            {COMPANY_INFO.map((item) => (
+              <p key={item}>
+                {item}
+              </p>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <Link href="/">
+              <Image
+                src="/logo.svg"
+                alt="MRNet"
+                width={185}
+                height={41}
+                priority
+              />
+            </Link>
+            <p className="uppercase text-xs leading-4.5 tracking-[0.07em]">
+              Категорически новый <br /> интернет для бизнеса
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-between">
+          <div className="space-y-6 text-xs leading-5 tracking-[0.01em]">
+            <div>
+              <p>Почта: <span className="underline">info@mrnet.ru</span></p>
+              <p>График работы: по будням</p>
+              <p>с 9:00 до 19:00 по Москве</p>
+            </div>
+            <div>
+              <h3>Служба поддержки:</h3>
+              <p>Тел: <span className="underline">8 (495) 308–41–51</span></p>
+              <p>Тел: <span className="underline">8 (800) 600–35–38</span></p>
+              <p>Почта: <span className="underline">helpdesk@mrnet.ru</span></p>
+              <p>График работы: 24/7</p>
+            </div>
+          </div>
+
+          <span className="text-xs leading-[140%] tracking-[0.01em]">©2025 mrnet.ru Все права защищены</span>
+          
+        </div>
+
+        <div className="text-xs leading-5 tracking-[0.01em] underline">
+          <div className="flex flex-col mb-6">
+            {LEGAL_LINKS.map((item) => (
+              <a key={item.label} href={item.href}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="flex flex-col">
+            {INSTRUCTION_LINKS.map((item) => (
+              <a key={item.label} href={item.href}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
     </div>
 
     <div className="hidden lg:block relative w-1/4 aspect-367/327 xl:w-92">

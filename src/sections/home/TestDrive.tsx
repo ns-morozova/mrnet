@@ -137,7 +137,7 @@ const TestDrive = () => {
           />
 
           <div
-            className={`${pagination} swiper-pagination-shared flex items-center justify-center gap-3 ${
+            className={`${pagination} swiper-pagination-shared flex items-center justify-center gap-3 lg:gap-4 ${
               isLocked ? "hidden" : ""
             }`}
           />
